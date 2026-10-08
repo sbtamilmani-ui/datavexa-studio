@@ -340,7 +340,8 @@ def create_admin(username, password):
         con.execute("INSERT INTO admins (username,password_hash) VALUES (?,?)",
                     (username, generate_password_hash(password)))
     print(f"Admin account '{username}' created.")
-
+# Initialize database when Render/Gunicorn imports this application
+init_db()
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
