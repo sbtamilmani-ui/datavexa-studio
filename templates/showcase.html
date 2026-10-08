@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Showcase | DataVexa Studio{% endblock %}
+{% block content %}
+<section class="page-hero showcase-hero"><div class="container"><span class="eyebrow">THE SHOWCASE</span><h1>A closer look at<br><span class="gradient-text">what we're building.</span></h1><p>A visual collection of data, AI, and web projects. Select any project to see more details.</p></div></section>
+<section class="section section-light"><div class="container showcase-grid">
+{% for project in projects %}
+<a class="showcase-item" href="{{ url_for('project_detail', slug=project.slug) }}">
+  <div class="showcase-image">{% if project.image %}<img src="{{ project.image }}" alt="{{ project.title }}">{% else %}<div class="showcase-placeholder"><span class="showcase-shape shape-{{ loop.index % 4 }}"></span><span class="showcase-gridlines"></span><span class="showcase-category">{{ project.category }}</span></div>{% endif %}<span class="showcase-open">↗</span></div>
+  <div class="showcase-caption"><div><small>{{ project.category }}</small><h3>{{ project.title }}</h3></div><span>Explore project ↗</span></div>
+</a>
+{% else %}<p>No projects published yet. Add projects from the admin dashboard.</p>{% endfor %}
+</div></section>
+{% endblock %}

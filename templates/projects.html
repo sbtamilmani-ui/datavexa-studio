@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Projects | DataVexa Studio{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container"><span class="eyebrow">PROJECT LIBRARY</span><h1>Work that shows<br><span class="gradient-text">how we think.</span></h1><p>Explore selected concepts and projects across analytics, AI, and web development.</p></div></section>
+<section class="section section-dark"><div class="container">
+  <div class="filter-row"><a class="filter-pill {% if not selected_category %}active{% endif %}" href="{{ url_for('projects') }}">All projects</a>{% for category in categories %}<a class="filter-pill {% if selected_category == category %}active{% endif %}" href="{{ url_for('projects', category=category) }}">{{ category }}</a>{% endfor %}</div>
+  <div class="project-grid project-grid-wide">
+  {% for project in projects %}
+    <article class="project-card">
+      <a class="project-visual visual-{{ loop.index % 3 + 1 }}" href="{{ url_for('project_detail', slug=project.slug) }}">{% if project.image %}<img src="{{ project.image }}" alt="{{ project.title }}">{% else %}<div class="visual-art"><span class="visual-orb"></span><span class="visual-lines"></span><span class="visual-tag">{{ project.category }}</span></div>{% endif %}<span class="visual-arrow">↗</span></a>
+      <div class="project-meta"><span>{{ project.category }}</span>{% if project.featured %}<span class="featured-label">FEATURED</span>{% endif %}</div><h3><a href="{{ url_for('project_detail', slug=project.slug) }}">{{ project.title }}</a></h3><p>{{ project.summary }}</p><a class="text-link" href="{{ url_for('project_detail', slug=project.slug) }}">View project <span>↗</span></a>
+    </article>
+  {% else %}<div class="empty-state"><h3>No published projects in this category yet.</h3><p>Choose another category or check back soon.</p><a href="{{ url_for('projects') }}" class="btn btn-primary">View all projects</a></div>{% endfor %}
+  </div>
+</div></section>
+{% endblock %}

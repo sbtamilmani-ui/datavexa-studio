@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080e1c">
+  <meta name="description" content="DataVexa Studio offers data analytics, business dashboards, practical AI automation, and responsive websites for growing businesses.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="DataVexa Studio — Data, AI & Web Solutions">
+  <meta property="og:description" content="Turn your business data into insights, automate repetitive work, and build a stronger online presence.">
+  <meta property="og:url" content="{{ request.base_url }}">
+  <meta name="robots" content="index,follow">
+  <title>{% block title %}DataVexa Studio — Data Analysis, AI & Web Solutions{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="{{ url_for('home') }}" aria-label="DataVexa Studio home">
+      <span class="brand-mark">D<span>V</span></span>
+      <span class="brand-name">DataVexa <small>STUDIO</small></span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="main-nav">
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('services') }}">Services</a>
+      <a href="{{ url_for('pricing') }}">Pricing</a>
+      <a href="{{ url_for('projects') }}">Projects</a>
+      <a href="{{ url_for('showcase') }}">Showcase</a>
+      <a href="{{ url_for('about') }}">About</a>
+      <a class="nav-cta" href="{{ url_for('contact') }}">Let's talk <span>↗</span></a>
+    </nav>
+  </div>
+</header>
+{% with notices = get_flashed_messages(with_categories=true) %}
+  {% if notices %}
+  <div class="container flash-wrap">
+    {% for category, message in notices %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}
+  </div>
+  {% endif %}
+{% endwith %}
+<main>{% block content %}{% endblock %}</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <a class="brand footer-brand" href="{{ url_for('home') }}"><span class="brand-mark">D<span>V</span></span><span class="brand-name">DataVexa <small>STUDIO</small></span></a>
+      <p class="muted footer-tagline">Data Analysis · AI · Web Solutions</p>
+      <p class="muted">We turn ideas and data into practical digital solutions.</p>
+    </div>
+    <div><h4>Explore</h4><a href="{{ url_for('services') }}">Services</a><a href="{{ url_for('pricing') }}">Pricing</a><a href="{{ url_for('projects') }}">Projects</a><a href="{{ url_for('showcase') }}">Showcase</a><a href="{{ url_for('about') }}">About us</a></div>
+    <div><h4>Start a project</h4><a href="{{ url_for('contact') }}">Contact</a><a href="mailto:datanovi.studio@gmail.com">Email us</a><a href="https://wa.me/919751059227" target="_blank" rel="noopener noreferrer">WhatsApp</a><a href="https://www.instagram.com/datavexa.studio/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.linkedin.com/in/sbtamil010/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://github.com/sbtamil010-cloud" target="_blank" rel="noopener noreferrer">GitHub</a><a href="{{ url_for('admin_login') }}">Admin login</a></div>
+  </div>
+  <div class="container footer-bottom"><span>© <span id="year"></span> DataVexa Studio. All rights reserved.</span><span>Built for ideas that move businesses forward.</span></div>
+</footer>
+</body>
+</html>

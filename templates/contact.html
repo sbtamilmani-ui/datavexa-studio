@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Contact DataVexa Studio | Get a Project Quote{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container"><span class="eyebrow">LET'S TALK</span><h1>Let's build something<br><span class="gradient-text">that grows your business.</span></h1><p>Tell us what you need. We'll help define a practical next step.</p></div></section>
+<section class="section section-light"><div class="container contact-layout">
+<div class="contact-copy"><span class="eyebrow">START A CONVERSATION</span><h2>Get clarity before you commit.</h2><p>DataVexa Studio helps small businesses with websites, dashboards, data analysis, and practical AI workflows.</p>
+<div class="contact-details">
+<a class="contact-item" href="mailto:datanovi.studio@gmail.com"><span class="contact-icon">✉</span><span><strong>Email</strong><small>datanovi.studio@gmail.com</small></span></a>
+<a class="contact-item" href="https://wa.me/919751059227?text=Hi%20DataVexa%20Studio%2C%20I%20want%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer"><span class="contact-icon">☏</span><span><strong>WhatsApp</strong><small>+91 97510 59227</small></span></a>
+</div><a class="btn btn-primary whatsapp-cta" href="https://wa.me/919751059227?text=Hi%20DataVexa%20Studio%2C%20I%20want%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer">Chat on WhatsApp ↗</a>
+<h3 class="social-heading">Connect with us</h3><div class="social-links"><a href="https://www.instagram.com/datavexa.studio/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://www.linkedin.com/in/sbtamil010/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://github.com/sbtamil010-cloud" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+<div class="contact-note"><span class="contact-note-icon">✳</span><div><strong>What happens next?</strong><p>Your inquiry appears in the private admin inbox. It is not automatically emailed, so check the dashboard regularly.</p></div></div><div class="contact-services"><span>Data analytics</span><span>AI automation</span><span>Web development</span></div></div>
+<form class="contact-form" method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><div class="form-title"><h2>Project inquiry</h2><p>Fields marked * are required.</p></div>
+<label>Your name *<input name="name" required maxlength="120" autocomplete="name" placeholder="Your full name"></label>
+<label>Email address *<input type="email" name="email" required maxlength="254" autocomplete="email" placeholder="you@example.com"></label>
+<div class="form-row"><label>Service required<select name="service"><option value="">Choose a service</option><option>Data Analytics & Dashboards</option><option>AI & Automation</option><option>Website Development</option><option>Other</option></select></label><label>Estimated budget<select name="budget"><option value="">Select a budget</option><option>Under ₹5,000</option><option>₹5,000–₹15,000</option><option>₹15,000–₹50,000</option><option>₹50,000+</option><option>Need guidance</option></select></label></div>
+<label>Project details *<textarea name="message" rows="5" required maxlength="5000" placeholder="What would you like to build or improve?"></textarea></label><button class="btn btn-primary btn-full" type="submit">Send project inquiry ↗</button><p class="form-privacy">Your message is stored for follow-up. Please don't include passwords or sensitive personal information.</p></form>
+</div></section>
+{% endblock %}

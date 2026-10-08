@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}{{ project.title }} | DataVexa Studio{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container"><a class="back-link" href="{{ url_for('projects') }}">← All projects</a><span class="eyebrow">{{ project.category }}</span><h1>{{ project.title }}</h1><p>{{ project.summary }}</p></div></section>
+<section class="section section-dark"><div class="container detail-layout">
+  <div class="detail-visual">{% if project.image %}<img src="{{ project.image }}" alt="{{ project.title }}">{% else %}<div class="visual-art detail-art"><span class="visual-orb"></span><span class="visual-lines"></span><span class="visual-tag">{{ project.category }}</span></div>{% endif %}</div>
+  <div class="detail-content"><span class="eyebrow">PROJECT OVERVIEW</span><h2>From challenge<br>to <span class="gradient-text">solution.</span></h2><p class="detail-description">{{ project.description or project.summary }}</p><h3>Tools & technologies</h3><div class="tech-tags">{% for tech in project.technologies.split(',') if tech.strip() %}<span>{{ tech.strip() }}</span>{% else %}<span>Details to be added</span>{% endfor %}</div><div class="detail-actions">{% if project.demo_url %}<a class="btn btn-primary" href="{{ project.demo_url }}" target="_blank" rel="noopener noreferrer">Open live demo ↗</a>{% endif %}{% if project.github_url %}<a class="btn btn-ghost" href="{{ project.github_url }}" target="_blank" rel="noopener noreferrer">View source ↗</a>{% endif %}<a class="btn btn-ghost" href="{{ url_for('contact') }}">Discuss a similar project ↗</a></div></div>
+</div></section>
+{% endblock %}

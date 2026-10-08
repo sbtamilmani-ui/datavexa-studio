@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}DataVexa Studio | Data, AI & Web Solutions{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <div class="eyebrow"><span class="pulse"></span> YOUR IDEAS. BUILT SMARTER.</div>
+      <h1>Make your next move<br>with <span class="gradient-text">clarity.</span></h1>
+      <p class="hero-lead">We turn complex data into clear decisions, use AI to simplify work, and build websites that help businesses grow.</p>
+      <div class="hero-actions"><a class="btn btn-primary" href="{{ url_for('contact') }}">Start a project <span>↗</span></a><a class="btn btn-ghost" href="{{ url_for('projects') }}">Explore our work <span>→</span></a></div>
+      <div class="hero-proof"><span class="proof-icon">✦</span><span>Practical digital solutions.<br><b>Designed around your goals.</b></span></div>
+    </div>
+    <div class="hero-art" aria-label="Abstract data analytics dashboard illustration">
+      <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+      <div class="dash-card dash-main">
+        <div class="dash-top"><span class="dot dot-blue"></span><span class="dot dot-purple"></span><span class="dot dot-white"></span><span class="dash-label">INSIGHT OVERVIEW</span></div>
+        <div class="dash-kpis"><div><small>Data clarity</small><strong>01<span>/03</span></strong></div><div><small>Workflow</small><strong>AI<span>+</span></strong></div></div>
+        <div class="chart-label">Performance snapshot <span>↗</span></div>
+        <div class="bar-chart"><i style="height:34%"></i><i style="height:48%"></i><i style="height:41%"></i><i style="height:67%"></i><i style="height:55%"></i><i style="height:79%"></i><i style="height:94%"></i><i style="height:72%"></i><i style="height:100%"></i></div>
+        <div class="chart-foot"><span>Clarity</span><span>Insights</span><span>Action</span></div>
+      </div>
+      <div class="floating-chip chip-ai"><span>✳</span> AI AUTOMATION</div>
+      <div class="floating-chip chip-data"><span>⌁</span> DATA → INSIGHT</div>
+      <div class="glow-ball"></div>
+    </div>
+  </div>
+  <div class="container hero-bottom"><span>OUR FOCUS</span><div>DATA ANALYTICS</div><b>✳</b><div>AI & AUTOMATION</div><b>✳</b><div>WEB SOLUTIONS</div></div>
+</section>
+<section class="section section-light">
+  <div class="container">
+    <div class="section-heading"><div><span class="eyebrow">WHAT WE DO</span><h2>Technology with a<br><span class="gradient-text">clear purpose.</span></h2></div><p>Thoughtful digital solutions to help you understand more, work smarter, and show up professionally online.</p></div>
+    <div class="service-grid">
+      <article class="service-card"><div class="service-icon">⌁</div><span class="card-index">01 / DATA</span><h3>Data Analytics</h3><p>Transform spreadsheets and business data into dashboards, patterns, and useful next steps.</p><a href="{{ url_for('services') }}">Explore analytics <span>↗</span></a></article>
+      <article class="service-card"><div class="service-icon">✳</div><span class="card-index">02 / AI</span><h3>AI & Automation</h3><p>Reduce repetitive work with practical AI workflows, reporting tools, and business automation.</p><a href="{{ url_for('services') }}">Explore AI solutions <span>↗</span></a></article>
+      <article class="service-card"><div class="service-icon">▧</div><span class="card-index">03 / WEB</span><h3>Web Solutions</h3><p>Build responsive websites and web apps that explain your value and make it easy to connect.</p><a href="{{ url_for('services') }}">Explore web services <span>↗</span></a></article>
+    </div>
+  </div>
+</section>
+<section class="section section-dark">
+  <div class="container">
+    <div class="section-heading"><div><span class="eyebrow">SELECTED WORK</span><h2>Ideas, turned into<br><span class="gradient-text">real projects.</span></h2></div><a class="text-link" href="{{ url_for('projects') }}">View all projects <span>↗</span></a></div>
+    <div class="project-grid">
+      {% for project in projects %}
+      <article class="project-card">
+        <a class="project-visual visual-{{ loop.index }}" href="{{ url_for('project_detail', slug=project.slug) }}">
+          {% if project.image %}<img src="{{ project.image }}" alt="{{ project.title }}">{% else %}<div class="visual-art"><span class="visual-orb"></span><span class="visual-lines"></span><span class="visual-tag">{{ project.category }}</span></div>{% endif %}
+          <span class="visual-arrow">↗</span>
+        </a>
+        <div class="project-meta"><span>{{ project.category }}</span>{% if project.featured %}<span class="featured-label">FEATURED</span>{% endif %}</div>
+        <h3><a href="{{ url_for('project_detail', slug=project.slug) }}">{{ project.title }}</a></h3><p>{{ project.summary }}</p>
+      </article>
+      {% else %}<p class="muted">Projects will appear here after they are published in the admin dashboard.</p>{% endfor %}
+    </div>
+  </div>
+</section>
+<section class="cta-section"><div class="container cta-box"><div><span class="eyebrow">HAVE A CHALLENGE?</span><h2>Let's build something<br><span class="gradient-text">that matters.</span></h2><p>Tell us what you want to improve. We'll explore the right next step together.</p></div><a class="btn btn-primary" href="{{ url_for('contact') }}">Tell us about your project <span>↗</span></a><div class="cta-decoration">DV</div></div></section>
+{% endblock %}

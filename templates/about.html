@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}About | DataVexa Studio{% endblock %}
+{% block content %}
+<section class="page-hero">
+    <div class="container"><span class="eyebrow">ABOUT DATAVEXA</span>
+        <h1>Built on curiosity.<br><span class="gradient-text">Driven by usefulness.</span></h1>
+        <p>We believe technology should make business clearer, simpler, and more capable.</p>
+    </div>
+</section>
+<section class="section section-light">
+    <div class="container about-layout">
+        <div class="about-art">
+            <div class="about-monogram"><img src="C:\Users\Tamil Mani\Downloads\DataVexa_Studio_Complete_Upgrade\DataVexa_Studio\static\uploads\logo.jpg" alt=""><span>.</span></div>
+            <div class="about-art-caption">DATA · AI · DIGITAL</div>
+        </div>
+        <div class="about-copy"><span class="eyebrow">OUR APPROACH</span>
+            <h2>Not technology for its own sake.<br><span class="gradient-text">Solutions with a reason.</span></h2>
+            <p>DataVexa Studio is a growing digital studio focused on data analytics, practical AI, and web solutions
+                for individuals and businesses.</p>
+            <p>Our approach starts with the problem: what should be easier, what should be clearer, or what should work
+                better? Then we shape a solution around that goal.</p>
+            <div class="values-list">
+                <div><b>01</b><span><strong>Clarity first</strong><small>Make complex things easier to
+                            understand.</small></span></div>
+                <div><b>02</b><span><strong>Practical by design</strong><small>Focus on useful outcomes, not empty
+                            buzzwords.</small></span></div>
+                <div><b>03</b><span><strong>Keep learning</strong><small>Build, test, improve, and learn with every
+                            project.</small></span></div>
+            </div><a class="btn btn-dark" href="{{ url_for('contact') }}">Work with us <span>↗</span></a>
+        </div>
+    </div>
+</section>
+<section class="section section-dark">
+    <div class="container narrow-center"><span class="eyebrow">LET'S CONNECT</span>
+        <h2>Have an idea in mind?</h2>
+        <p>Whether you're exploring a dashboard, a website, or an AI workflow, start with a conversation.</p><a
+            class="btn btn-primary" href="{{ url_for('contact') }}">Tell us about it <span>↗</span></a>
+    </div>
+</section>
+{% endblock %}

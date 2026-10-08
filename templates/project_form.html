@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Edit' if project else 'Add' }} Project | DataVexa Studio{% endblock %}
+{% block content %}
+<section class="admin-page"><div class="container form-admin-wrap"><a class="back-link" href="{{ url_for('admin') }}">← Back to dashboard</a><div class="admin-form-heading"><span class="eyebrow">PROJECT CMS</span><h1>{{ 'Edit project' if project else 'Add a project' }}</h1><p>Details entered here are used on the Projects and Showcase pages.</p></div>
+<form class="admin-edit-form" method="post" enctype="multipart/form-data"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <label>Project title *<input name="title" required value="{{ project.title if project else '' }}" placeholder="e.g. Sales Analytics Dashboard"></label>
+  <label>URL slug<input name="slug" value="{{ project.slug if project else '' }}" placeholder="sales-analytics-dashboard"><small>Use lowercase letters, numbers, and hyphens. Leave blank to generate from title.</small></label>
+  <label>Category<select name="category">{% for c in ['Data Analytics','AI & Automation','Web Solutions','College Project','Other'] %}<option {% if project and project.category == c %}selected{% endif %}>{{ c }}</option>{% endfor %}</select></label>
+  <label>Short summary *<textarea name="summary" rows="3" required maxlength="500" placeholder="A concise project summary">{{ project.summary if project else '' }}</textarea></label>
+  <label>Full description<textarea name="description" rows="6" placeholder="Problem, approach, solution, and outcomes">{{ project.description if project else '' }}</textarea></label>
+  <label>Technologies<input name="technologies" value="{{ project.technologies if project else '' }}" placeholder="Python, Pandas, Streamlit"></label>
+  <label>Project thumbnail<input type="file" name="image_file" accept=".png,.jpg,.jpeg,.webp,.gif"><small>Optional. Maximum file size: 8 MB. Use images you have permission to publish.</small></label>
+  {% if project and project.image %}<p class="current-image">Current image: <a href="{{ project.image }}" target="_blank" rel="noopener">View image</a></p>{% endif %}
+  <label>Live demo URL<input type="url" name="demo_url" value="{{ project.demo_url if project else '' }}" placeholder="https://example.com"></label>
+  <label>GitHub / source URL<input type="url" name="github_url" value="{{ project.github_url if project else '' }}" placeholder="https://github.com/username/repository"></label>
+  <div class="checkbox-row"><label><input type="checkbox" name="featured" {% if project and project.featured %}checked{% endif %}> Feature on homepage</label><label><input type="checkbox" name="published" {% if not project or project.published %}checked{% endif %}> Publish on website</label></div>
+  <div class="form-actions"><button class="btn btn-primary" type="submit">Save project ↗</button><a class="btn btn-ghost" href="{{ url_for('admin') }}">Cancel</a></div>
+</form></div></section>
+{% endblock %}
